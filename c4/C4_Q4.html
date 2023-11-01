@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h2 {
+  font-size: 30px;
+  color: green;
+  font-weight: bold;
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+<center>
+<h2>Check whether positive or negative</h2>
+<br>
+<br>
+<label>Enter a number:
+  <input type="text" id="txt1">
+</label>
+<br><br>
+<button onclick="myFunction()">Check</button>
+<p id="y"></p>
+<script>
+function myFunction() {
+  var x = parseInt(document.getElementById("txt1").value);
+  if (!isNaN(x)) {
+    if (x > 0) {
+      document.getElementById("y").innerHTML = x + " is positive";
+    } else if (x < 0) {
+      document.getElementById("y").innerHTML = x + " is negative";
+    } else {
+      document.getElementById("y").innerHTML = x + " is zero";
+    }
+  } else {
+    document.getElementById("y").innerHTML = "Please enter a valid number";
+  }
+}
+</script>
+</center>
+</body>
+</html>
