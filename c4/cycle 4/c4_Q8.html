@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculate Your Age</title>
+    <style>
+        h1 {
+            color: green;
+            text-decoration: underline;
+        }
+
+        p {
+            color: green;
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <br><br><br>
+    <center>
+        <h1>Calculate Your Age</h1><br><br>
+        <label for="firstNameInput">First Name:</label>
+        <input type="text" id="firstNameInput">
+        <br><br>
+        <label for="dateOfBirthInput">Date of Birth (dd/mm/yyyy):</label>
+        <input type="text" id="dateOfBirthInput">
+        <br><br>
+        <button id="calculateAgeButton">Calculate Age</button>
+        <p id="result"></p>
+
+        <script>
+            document.getElementById("calculateAgeButton").addEventListener("click", function () {
+                // Get user inputs
+                const firstName = document.getElementById("firstNameInput").value;
+                const dateOfBirthInput = document.getElementById("dateOfBirthInput").value;
+
+                // Parse the date of birth input in 'dd/mm/yyyy' format
+                const dobParts = dateOfBirthInput.split('/');
+                if (dobParts.length !== 3) {
+                    alert("Invalid date of birth format. Please use 'dd/mm/yyyy'.");
+                    return;
+                }
+
+                const day = parseInt(dobParts[0]);
+                const month = parseInt(dobParts[1]);
+                const year = parseInt(dobParts[2]);
+
+                // Calculate age
+                const currentYear = new Date().getFullYear();
+                const currentMonth = new Date().getMonth() + 1; // Months are 0-indexed, so we add 1.
+                const currentDay = new Date().getDate();
+
+                let age = currentYear - year;
+
+                if (currentMonth < month || (currentMonth == month && currentDay < day)) {
+                    age--; // The birthday hasn't occurred yet this year.
+                }
+
+                // Display the age on the web page
+                document.getElementById("result").textContent = `${firstName}, you are ${age} years old.`;
+            });
+        </script>
+    </center>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Yearly Calendar Generator</title>
+</head>
+<body>
+    <h1>Yearly Calendar Generator</h1>
+    <p>Enter a year to generate a calendar:</p>
+    <input type="number" id="yearInput" placeholder="Enter a year">
+    <button onclick="generateCalendar()">Generate Calendar</button>
+    <div id="calendar"></div>
+
+    <script>
+        function generateCalendar() {
+            const yearInput = document.getElementById('yearInput').value;
+            const year = parseInt(yearInput);
+
+            if (isNaN(year)) {
+                alert('Please enter a valid year.');
+                return;
+            }
+
+            const months = [
+                'January', 'February', 'March', 'April',
+                'May', 'June', 'July', 'August',
+                'September', 'October', 'November', 'December'
+            ];
+
+            let calendarHTML = '';
+
+            for (let monthIndex = 0; monthIndex < 12; monthIndex++) {
+                const monthName = months[monthIndex];
+                const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
+
+                calendarHTML += `<h2>${monthName} ${year}</h2>`;
+                calendarHTML += '<table>';
+                calendarHTML += '<tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr>';
+                calendarHTML += '<tr>';
+
+                let dayOfWeek = new Date(year, monthIndex, 1).getDay();
+                dayOfWeek = (dayOfWeek === 0) ? 7 : dayOfWeek;
+
+                for (let i = 1; i < dayOfWeek; i++) {
+                    calendarHTML += '<td></td>';
+                }
+
+                for (let day = 1; day <= daysInMonth; day++) {
+                    calendarHTML += `<td>${day}</td>`;
+                    if (dayOfWeek === 7) {
+                        calendarHTML += '</tr><tr>';
+                        dayOfWeek = 1;
+                    } else {
+                        dayOfWeek++;
+                    }
+                }
+
+                calendarHTML += '</tr></table>';
+            }
+
+            const calendarDiv = document.getElementById('calendar');
+            calendarDiv.innerHTML = calendarHTML;
+        }
+    </script>
+</body>
+</html>

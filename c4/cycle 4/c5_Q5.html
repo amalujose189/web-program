@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h2 {
+  font-size: 30px;
+  color: green;
+  font-weight: bold;
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+<center>
+<h2>click button to change colour</h2>
+<br>
+<br>
+<label>Enter text:
+  <input type="text" id="txt1">
+</label>
+<br><br>
+<button onclick="myFunction()">Check</button>
+<p id="y"></p>
+<script>
+function myFunction() {
+ var inputElement = document.getElementById("txt1");
+  inputElement.style.color = "red";
+   
+</script>
+</center>
+</body>
+</html>

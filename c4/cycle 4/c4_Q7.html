@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Background Color Changer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #paragraph {
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Choose the Background Color for Your Paragraph</h1>
+
+    <p>Enter a color name or a hexadecimal color code (e.g., "red" or "#FF5733").</p>
+
+    <button onclick="changeBackgroundColor()">Set Background Color</button>
+
+    <p id="paragraph">This is a paragraph with a customizable background color.</p>
+
+    <script>
+        function changeBackgroundColor() {
+            const colorInput = prompt("Enter a color name or a hexadecimal color code (e.g., 'red' or '#FF5733'):");
+            const paragraph = document.getElementById('paragraph');
+
+            if (colorInput) {
+                paragraph.style.backgroundColor = colorInput;
+            }
+        }
+    </script>
+</body>
+</html>
